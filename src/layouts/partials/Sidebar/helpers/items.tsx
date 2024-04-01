@@ -1,0 +1,47 @@
+import JavascriptIcon from '@mui/icons-material/Javascript';
+
+import { Path, PATH_LABEL } from '~/constants';
+import { SidebarItem } from '~/types/sidebar';
+
+export const SIDEBAR_ITEMS: SidebarItem[] = [
+  {
+    name: PATH_LABEL[Path.JS],
+    icon: <JavascriptIcon sx={{ fontSize: '60px' }} />,
+    path: Path.JS,
+    children: [
+      {
+        name: PATH_LABEL[Path.JS_INTERSECTION_OBSERVER],
+        path: Path.JS_INTERSECTION_OBSERVER,
+      },
+    ],
+  },
+  // {
+  //   name: PATH_LABEL[Path.DASHBOARD],
+  //   icon: <CottageOutlinedIcon sx={{ fontSize: '20px' }} />,
+  //   path: Path.DASHBOARD,
+  // },
+  // {
+  //   name: PATH_LABEL[Path.HOME],
+  //   icon: <DashboardOutlinedIcon sx={{ fontSize: '20px' }} />,
+  //   path: Path.HOME,
+  // },
+  // {
+  //   name: PATH_LABEL[Path.COMPONENTS],
+  //   icon: <HandymanOutlinedIcon sx={{ fontSize: '20px' }} />,
+  //   path: Path.COMPONENTS,
+  //   children: [
+  //     {
+  //       name: PATH_LABEL[Path.COMPONENTS_CALENDAR],
+  //       path: Path.COMPONENTS_CALENDAR,
+  //     },
+  //     {
+  //       name: PATH_LABEL[Path.COMPONENTS_CHART],
+  //       path: Path.COMPONENTS_CHART,
+  //     },
+  //     {
+  //       name: PATH_LABEL[Path.COMPONENTS_TABLE],
+  //       path: Path.COMPONENTS_TABLE,
+  //     },
+  //   ],
+  // },
+];
