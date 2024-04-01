@@ -1,44 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { Box, Skeleton, styled, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import { useQueryUserById } from '~/services/users/useQueryUserById';
 
+import {
+  StyledItem,
+  StyledItemContainer,
+  StyledSkeletonItem,
+} from '~/pages/JS/IntersectionObserverPage/styles';
 import {
   defaultDemoLazyLoadingData,
   DemoLazyLoadingData,
 } from '~/pages/JS/utils/lazyLoadingData';
 
 import { Stack } from '~/components/MuiComponents';
-
-const StyledItemContainer = styled(Stack)(() => ({
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  width: '100%',
-}));
-
-const StyledItem = styled(Box)(({ theme }) => ({
-  width: '30%',
-  height: 150,
-  margin: 6,
-  transition: 'all 0.5s',
-  backgroundColor: theme.palette.primary.main,
-  padding: 0,
-  borderRadius: 3,
-  justifyContent: 'center',
-  alignItems: ' center',
-  display: 'flex',
-}));
-
-const StyledSkeletonItem = styled(Skeleton)(() => ({
-  width: '30%',
-  height: 150 * (10 / 6),
-  margin: 6,
-  transition: 'all 0.5s',
-  padding: 0,
-}));
 
 export interface IIntersectionObserverPageProps {}
 
