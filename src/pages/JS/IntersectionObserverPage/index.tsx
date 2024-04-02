@@ -40,7 +40,7 @@ export default function IntersectionObserverPage() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.intersectionRatio >= 0.3) {
+          if (entry.isIntersecting) {
             const targetId = entry.target.id.replace('data', '');
             setIdQueueList((prevValue) => [...prevValue, targetId]);
 
@@ -49,7 +49,7 @@ export default function IntersectionObserverPage() {
         });
       },
       {
-        threshold: 0.3,
+        threshold: 0.1,
       },
     );
 
@@ -93,6 +93,9 @@ export default function IntersectionObserverPage() {
 
   return (
     <Stack sx={{ width: '100%', height: '100%' }}>
+      <Typography fontWeight={'bold'} margin={6} variant='h4'>
+        Using Intersection Observer API to implement Lazy loading
+      </Typography>
       <Stack sx={{ flex: 1 }}>
         <StyledItemContainer>
           {Object.keys(lazyData).map((key) => {
