@@ -42,7 +42,7 @@ export default function IntersectionObserverPage() {
         entries.forEach((entry) => {
           if (entry.intersectionRatio >= 0.3) {
             const targetId = entry.target.id.replace('data', '');
-            setIdQueueList((prevValue) => [targetId, ...prevValue]);
+            setIdQueueList((prevValue) => [...prevValue, targetId]);
 
             observer.unobserve(entry.target);
           }
