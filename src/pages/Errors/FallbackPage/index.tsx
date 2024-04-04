@@ -5,7 +5,6 @@ interface ErrorObject {
 }
 
 export function FallbackPage() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const error = useRouteError() as ErrorObject;
 
   return (

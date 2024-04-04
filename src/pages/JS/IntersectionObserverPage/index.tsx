@@ -12,7 +12,7 @@ import {
 import {
   defaultDemoLazyLoadingData,
   DemoLazyLoadingData,
-} from '~/pages/JS/utils/lazyLoadingData';
+} from '~/pages/JS/types/lazyLoadingData';
 
 import { Stack } from '~/components/MuiComponents';
 

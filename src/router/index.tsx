@@ -17,7 +17,7 @@ function AppRouter() {
     {
       path: Path.HOME,
       element: <App />,
-      ErrorBoundary: FallbackPage,
+      ErrorBoundary: FallbackPage as React.ComponentType,
       children: [
         ...publicRoutes.map((route) => ({
           ...route,

@@ -51,7 +51,6 @@ export function DefaultLayout({
               onToggled={() => setToggled(!toggled)}
             />
             <Box sx={{ px: 4, py: 2, flex: 1 }}>{children}</Box>
-            {/* <Footer /> */}
           </Stack>
         </Stack>
       </Container>

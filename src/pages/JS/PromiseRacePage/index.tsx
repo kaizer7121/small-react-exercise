@@ -8,7 +8,7 @@ import {
   getImageUrls,
   ImageType,
   ReponseImage,
-} from '~/pages/JS/utils/promiseRaceData';
+} from '~/pages/JS/types/promiseRaceData';
 
 export const PromiseRacePage = () => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
