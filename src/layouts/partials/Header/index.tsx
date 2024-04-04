@@ -1,11 +1,6 @@
 import ToggleSidebarButton from '~/layouts/partials/Header/ToggleSidebarButton';
 
-import {
-  AppBar,
-  Container,
-  Stack,
-  Toolbar,
-} from '~/components/MuiComponents';
+import { AppBar, Container, Stack, Toolbar } from '~/components/MuiComponents';
 
 interface IHeaderProps {
   broken: boolean;

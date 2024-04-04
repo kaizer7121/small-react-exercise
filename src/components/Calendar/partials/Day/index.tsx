@@ -1,10 +1,6 @@
 import { useRef } from 'react';
 import { format, isSameDay, isSameMonth } from 'date-fns';
-import {
-  useDayPicker,
-  useDayRender,
-  useNavigation,
-} from 'react-day-picker';
+import { useDayPicker, useDayRender, useNavigation } from 'react-day-picker';
 
 import { Avatar, Stack, Typography } from '~/libs/mui';
 

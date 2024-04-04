@@ -6,11 +6,7 @@ import {
   isValid,
   startOfMonth,
 } from 'date-fns';
-import {
-  useDayPicker,
-  useDayRender,
-  useNavigation,
-} from 'react-day-picker';
+import { useDayPicker, useDayRender, useNavigation } from 'react-day-picker';
 
 import {
   Button,
