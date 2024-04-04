@@ -33,14 +33,12 @@ export const PromiseRacePage = () => {
             return { imageResponse: response, type: imageUrl.type }; // Assuming the response is the image data
           }),
         );
-        setTimeout(async () => {
-          if (winner) {
-            const blob = await winner.imageResponse.blob();
-            const url = URL.createObjectURL(blob);
-            setImageUrl(url);
-            setImageType(winner.type);
-          }
-        }, 500);
+        if (winner) {
+          const blob = await winner.imageResponse.blob();
+          const url = URL.createObjectURL(blob);
+          setImageUrl(url);
+          setImageType(winner.type);
+        }
       } catch (error) {
         setError(error as Error);
       } finally {
