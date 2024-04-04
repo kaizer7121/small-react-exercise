@@ -10,7 +10,7 @@ export interface ISoftChipProps extends Omit<ChipProps, 'variant' | 'color'> {
 
 export function SoftChip(props: ISoftChipProps) {
   const { color = 'primary', shape = 'rounded' } = props;
-  const { bgrColor } = useSoftColor(color);
+  const { bgrColor } = useSoftColor();
 
   return (
     <Chip

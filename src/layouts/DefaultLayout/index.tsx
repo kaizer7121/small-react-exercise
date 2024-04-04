@@ -1,7 +1,6 @@
 import { ReactNode, useState } from 'react';
 
 import { Header } from '~/layouts/partials/Header';
-import Loading from '~/layouts/partials/Loading';
 import { SideBar } from '~/layouts/partials/Sidebar';
 
 import { Box, Container, Stack } from '~/components/MuiComponents';
@@ -31,7 +30,6 @@ export function DefaultLayout({
           position: 'relative',
         }}
       >
-        <Loading />
         <Stack direction='row' sx={{ height: '100%' }}>
           {!isSideBarDisabled && (
             <SideBar
