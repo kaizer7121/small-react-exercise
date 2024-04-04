@@ -93,7 +93,7 @@ export default function IntersectionObserverPage() {
 
   return (
     <Stack sx={{ width: '100%', height: '100%' }}>
-      <Typography fontWeight={'bold'} margin={6} variant='h4'>
+      <Typography fontWeight={'bold'} margin={2} variant='h4'>
         Using Intersection Observer API to implement Lazy loading
       </Typography>
       <Stack sx={{ flex: 1 }}>

@@ -4,7 +4,10 @@ export enum Path {
 
   // JS
   JS = '/js',
-  JS_INTERSECTION_OBSERVER = '/js/IntersectionObserver',
+  JS_INTERSECTION_OBSERVER = '/js/intersection-observer',
+  JS_INTERSECTION_OBSERVER_RELATIVE = 'intersection-observer',
+  JS_PROMISE_RACE = '/js/promice-race',
+  JS_PROMISE_RACE_RELATIVE = 'promice-race',
 
   // Errors
   NOT_FOUND = '/not-found',
@@ -17,4 +20,7 @@ export const PATH_LABEL: Record<Path, string> = {
   [Path.FORBIDDEN]: 'Forbidden',
   [Path.JS]: 'Javascript',
   [Path.JS_INTERSECTION_OBSERVER]: 'Intersection Observer',
+  [Path.JS_PROMISE_RACE]: 'Promise race',
+  [Path.JS_INTERSECTION_OBSERVER_RELATIVE]: 'Intersection Observer',
+  [Path.JS_PROMISE_RACE_RELATIVE]: 'Promise Race',
 };

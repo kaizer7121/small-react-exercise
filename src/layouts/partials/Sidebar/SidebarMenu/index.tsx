@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useSoftColor } from '~/hooks';
 import { SIDEBAR_ITEMS } from '~/layouts/partials/Sidebar/helpers/items';
-import { useTheme } from '~/libs/mui';
+import { Box, useTheme } from '~/libs/mui';
 
 export interface ISidebarMenuProps {
   collapsed: boolean;
@@ -13,6 +13,10 @@ export default function SidebarMenu({ collapsed }: ISidebarMenuProps) {
   const theme = useTheme();
   const location = useLocation();
   const { bgrColor, bgrHoverColor } = useSoftColor();
+
+  const getSideMenuMargin = (numberOfSubItem: number) => {
+    return numberOfSubItem * 5 - 3;
+  };
 
   return (
     <Menu
@@ -57,17 +61,23 @@ export default function SidebarMenu({ collapsed }: ISidebarMenuProps) {
             icon={item.icon}
             label={item.name}
           >
-            {item.children.map((child) => {
-              return (
-                <MenuItem
-                  key={child.path}
-                  active={location.pathname == child.path}
-                  component={<Link to={child.path} />}
-                >
-                  {child.name}
-                </MenuItem>
-              );
-            })}
+            <Box
+              marginTop={
+                collapsed ? getSideMenuMargin(item.children.length) : 0
+              }
+            >
+              {item.children.map((child) => {
+                return (
+                  <MenuItem
+                    key={child.path}
+                    active={location.pathname == child.path}
+                    component={<Link to={child.path} />}
+                  >
+                    {child.name}
+                  </MenuItem>
+                );
+              })}
+            </Box>
           </SubMenu>
         ) : (
           <MenuItem
