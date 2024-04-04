@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Box, CardContent, CardMedia, Grid, Skeleton } from '@mui/material';
+import { CardMedia, Grid, Skeleton } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 import { StyledImageItem } from '~/pages/JS/PromiseRacePage/styles';
@@ -52,7 +52,7 @@ export const PromiseRacePage = () => {
   const generateImageByType = (type: ImageType) => {
     if (isLoading || !imageType || !imageUrl) {
       return (
-        <Skeleton height={410} variant='rounded' width='100%'>
+        <Skeleton height={340} variant='rounded' width='100%'>
           loading...
         </Skeleton>
       );
@@ -72,25 +72,18 @@ export const PromiseRacePage = () => {
   };
 
   return (
-    <Box>
+    <>
       <Typography fontWeight={'bold'} margin={2} variant='h4'>
         Using <strong>promise.race()</strong> to get the fastest image
       </Typography>
       {error ? (
-        <CardContent>
-          <Typography color='error' variant='body2'>
-            Error loading image: {error.message}
-          </Typography>
-        </CardContent>
+        <Typography color='error' variant='body2'>
+          Error loading image: {error.message}
+        </Typography>
       ) : (
-        <Grid
-          container
-          justifyContent='space-around'
-          paddingInline={2}
-          spacing={10}
-        >
+        <Grid container gap={1} justifyContent='space-around' paddingInline={2}>
           {getImageUrls.map((image, index) => (
-            <Grid key={`IMAGE_${index + 1}`} item xs={4}>
+            <Grid key={`IMAGE_${index + 1}`} item xs={3}>
               <StyledImageItem>
                 <Typography marginBottom={5} variant='h5'>
                   <strong>Category</strong>: {image.type}
@@ -101,6 +94,6 @@ export const PromiseRacePage = () => {
           ))}
         </Grid>
       )}
-    </Box>
+    </>
   );
 };
