@@ -8,6 +8,8 @@ import { HomePage } from '~/pages/HomePage';
 import { JSPageLayout } from '~/pages/JS';
 import IntersectionObserverPage from '~/pages/JS/IntersectionObserverPage';
 import { PromiseRacePage } from '~/pages/JS/PromiseRacePage';
+import { TSPageLayout } from '~/pages/TS';
+import TodoListPage from '~/pages/TS/TodoListPage';
 
 export const publicRoutes: (PublicRouteObject & RouteObject)[] = [
   {
@@ -27,6 +29,17 @@ export const publicRoutes: (PublicRouteObject & RouteObject)[] = [
       {
         path: Path.JS_PROMISE_RACE_RELATIVE,
         element: <PromiseRacePage />,
+      },
+    ],
+  },
+  {
+    path: Path.TS,
+    element: <TSPageLayout />,
+    layout: <DefaultLayout />,
+    children: [
+      {
+        path: Path.TS_TODO_LIST_RELATIVE,
+        element: <TodoListPage />,
       },
     ],
   },

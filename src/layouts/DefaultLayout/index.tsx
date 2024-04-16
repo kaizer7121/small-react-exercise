@@ -18,7 +18,7 @@ export function DefaultLayout({
   const [broken, setBroken] = useState(
     window.matchMedia('(max-width: 900px)').matches,
   );
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <>
