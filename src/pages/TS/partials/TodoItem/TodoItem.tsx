@@ -53,6 +53,7 @@ const TodoItem = ({ item, index, onDelete, onEdit }: TodoProps) => {
                 {new Date(item.dueDate).toLocaleDateString('en-us', {
                   month: 'short',
                   day: '2-digit',
+                  year: 'numeric',
                 })}
               </p>
             </Box>
