@@ -15,6 +15,9 @@ export default function SidebarMenu({ collapsed }: ISidebarMenuProps) {
   const { bgrColor, bgrHoverColor } = useSoftColor();
 
   const getSideMenuMargin = (numberOfSubItem: number) => {
+    if (numberOfSubItem === 1) {
+      return 0;
+    }
     return numberOfSubItem * 5 - 3;
   };
 
