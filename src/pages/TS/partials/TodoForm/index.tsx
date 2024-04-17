@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import {
@@ -14,10 +15,29 @@ import { Todo, TodoStatus, TodoTypeForm } from '~/pages/TS/types/todo';
 
 type TodoFormProps = {
   onSubmit: (data: Todo) => void;
+  editedValue?: Todo;
   title?: string;
 };
 
-const TodoForm = ({ onSubmit, title = ' Adding new todo' }: TodoFormProps) => {
+const TodoForm = ({
+  onSubmit,
+  editedValue,
+  title = ' Adding new todo',
+}: TodoFormProps) => {
+  const defaultValues: TodoTypeForm = useMemo(
+    () =>
+      editedValue
+        ? {
+            id: editedValue.id,
+            dueDate: new Date(editedValue.dueDate),
+            text: editedValue.text,
+          }
+        : {
+            text: '',
+            dueDate: new Date(),
+          },
+    [editedValue],
+  );
   const {
     register,
     handleSubmit,
@@ -25,21 +45,29 @@ const TodoForm = ({ onSubmit, title = ' Adding new todo' }: TodoFormProps) => {
     reset,
     control,
   } = useForm<TodoTypeForm>({
-    defaultValues: {
-      text: '',
-      dueDate: new Date(),
-    },
+    defaultValues,
   });
 
   const onSubmitHandler = (data: TodoTypeForm) => {
-    const formartedData: Todo = {
-      text: data.text,
-      status: TodoStatus.New,
-      dueDate: data.dueDate.toString(),
-    };
+    if (defaultValues.id) {
+      const formartedData: Todo = {
+        id: defaultValues.id,
+        text: data.text,
+        status: TodoStatus.New,
+        dueDate: data.dueDate.toString(),
+      };
 
-    onSubmit(formartedData);
-    reset();
+      onSubmit(formartedData);
+    } else {
+      const formartedData: Todo = {
+        text: data.text,
+        status: TodoStatus.New,
+        dueDate: data.dueDate.toString(),
+      };
+
+      onSubmit(formartedData);
+      reset();
+    }
   };
 
   return (
@@ -72,7 +100,12 @@ const TodoForm = ({ onSubmit, title = ' Adding new todo' }: TodoFormProps) => {
             </TextField>
           )}
         </FormControl>
-        <Button fullWidth type='submit' variant='contained'>
+        <Button
+          fullWidth
+          sx={{ marginTop: '2rem' }}
+          type='submit'
+          variant='contained'
+        >
           Add
         </Button>
       </form>

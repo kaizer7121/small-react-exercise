@@ -12,6 +12,7 @@ export type Todo = {
 };
 
 export type TodoTypeForm = {
+  id?: string;
   text: string;
   dueDate: Date;
 };

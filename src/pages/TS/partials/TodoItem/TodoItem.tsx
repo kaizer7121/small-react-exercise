@@ -1,7 +1,18 @@
+import { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 import { DeleteOutlined, EditOutlined } from '@mui/icons-material';
-import { Box, IconButton, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  Typography,
+} from '@mui/material';
 
 import {
   StyledIconContainer,
@@ -17,10 +28,20 @@ interface TodoProps {
 }
 
 const TodoItem = ({ item, index, onDelete, onEdit }: TodoProps) => {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Draggable key={item.id} draggableId={item.id ?? ''} index={index}>
       {(provided, snapshot) => (
-        <div
+        <Box
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -39,12 +60,32 @@ const TodoItem = ({ item, index, onDelete, onEdit }: TodoProps) => {
               <IconButton onClick={() => onEdit(item)}>
                 <EditOutlined />
               </IconButton>
-              <IconButton onClick={() => onDelete(item.id ?? '')}>
+              <IconButton onClick={handleClickOpen}>
                 <DeleteOutlined />
               </IconButton>
             </StyledIconContainer>
           </StyledTaskInformation>
-        </div>
+          <Dialog
+            aria-labelledby='draggable-dialog-title'
+            open={open}
+            onClose={handleClose}
+          >
+            <DialogTitle id='draggable-dialog-title' style={{ cursor: 'move' }}>
+              Delete todo
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                To delete it, the item will not be restored.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button autoFocus onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button onClick={() => onDelete(item.id ?? '')}>Delete</Button>
+            </DialogActions>
+          </Dialog>
+        </Box>
       )}
     </Draggable>
   );

@@ -9,9 +9,9 @@ export const StyledFormContainer = styled(Box)({
   padding: '2rem',
 
   border: '1px solid rgba(0,0,0, 0.2)',
+  backgroundColor: 'white',
 
   '& button': {
-    marginTop: '2rem',
     paddingBlock: '0.5rem',
   },
 });

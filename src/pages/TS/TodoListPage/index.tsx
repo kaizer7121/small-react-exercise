@@ -17,12 +17,12 @@ import { Todo, TodoResponse, TodoStatus } from '~/pages/TS/types/todo';
 
 const TodoListPage = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [editingTodo, setEditingTodo] = useState<Todo | null>();
+  const [editedTodo, setEditedTodo] = useState<Todo>();
   const handleOpenEditTodoModal = (todo: Todo) => {
-    setEditingTodo(todo);
+    setEditedTodo(todo);
   };
   const handleClose = () => {
-    setEditingTodo(null);
+    setEditedTodo(undefined);
   };
 
   useEffect(() => {
@@ -81,6 +81,7 @@ const TodoListPage = () => {
         updatedTodo,
         ...todos.slice(todoIndex + 1),
       ]);
+      handleClose();
     }
   };
 
@@ -99,7 +100,6 @@ const TodoListPage = () => {
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
-    // dropped outside the list
     if (!destination) {
       return;
     }
@@ -119,7 +119,7 @@ const TodoListPage = () => {
   return (
     <Box>
       <Typography fontWeight={'bold'} margin={2} marginBottom={4} variant='h4'>
-        Implement draggable todo list
+        Implement draggable todo list by react-beautiful-dnd
       </Typography>
       <TodoForm onSubmit={handleAddTodo} />
       <DragDropContext onDragEnd={onDragEnd}>
@@ -140,8 +140,9 @@ const TodoListPage = () => {
         </StyledContainer>
       </DragDropContext>
       <EditItemModal
+        editedTodo={editedTodo}
         handleClose={handleClose}
-        open={!!editingTodo}
+        open={!!editedTodo}
         onEdit={handleEditTodo}
       />
     </Box>

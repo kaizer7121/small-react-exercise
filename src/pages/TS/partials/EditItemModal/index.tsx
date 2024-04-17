@@ -1,5 +1,6 @@
 import { Modal } from '@mui/material';
 
+import { StyledModalContainer } from '~/pages/TS/partials/EditItemModal/styles';
 import TodoForm from '~/pages/TS/partials/TodoForm';
 import { Todo } from '~/pages/TS/types/todo';
 
@@ -7,9 +8,15 @@ type EditItemModalProps = {
   open: boolean;
   handleClose: VoidFunction;
   onEdit: (data: Todo) => void;
+  editedTodo?: Todo;
 };
 
-const EditItemModal = ({ open, handleClose, onEdit }: EditItemModalProps) => {
+const EditItemModal = ({
+  open,
+  handleClose,
+  onEdit,
+  editedTodo,
+}: EditItemModalProps) => {
   return (
     <Modal
       aria-describedby='modal-modal-description'
@@ -17,7 +24,13 @@ const EditItemModal = ({ open, handleClose, onEdit }: EditItemModalProps) => {
       open={open}
       onClose={handleClose}
     >
-      <TodoForm title='Editing Item' onSubmit={onEdit} />
+      <StyledModalContainer>
+        <TodoForm
+          editedValue={editedTodo}
+          title='Editing Item'
+          onSubmit={onEdit}
+        />
+      </StyledModalContainer>
     </Modal>
   );
 };

@@ -5,7 +5,7 @@ type StyledTaskInformationProps = BoxProps & {
 };
 
 export const StyledTaskInformation = styled(Box, {
-  shouldForwardProp: (prop) => prop !== 'StyledTaskInformationProps',
+  shouldForwardProp: (prop) => prop !== 'isDragging',
 })<StyledTaskInformationProps>(({ isDragging, theme }) => ({
   display: 'flex',
   flexDirection: 'column',
